@@ -1,0 +1,50 @@
+services:
+  app1:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    command: npm run dev
+    restart: unless-stopped
+
+  app2:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    command: npm run dev
+    restart: unless-stopped
+
+  app3:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    command: npm run dev
+    restart: unless-stopped
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    depends_on:
+      - app1
+      - app2
+      - app3
+    restart: unless-stopped
