@@ -1,3 +1,14 @@
 node_modules
 .env
 npm-debug.log
+
+# SSL certificates
+certs/
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Lambda build artifacts
+lambda/function.zip
