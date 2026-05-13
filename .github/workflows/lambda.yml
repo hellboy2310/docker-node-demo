@@ -1,11 +1,7 @@
 name: Lambda Deploy
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'lambda/**'
+  workflow_dispatch:
 
 jobs:
   deploy:
